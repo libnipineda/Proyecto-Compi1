@@ -1,0 +1,42 @@
+<INICIO> := {<ESTRUCTURA>}
+<ESTRUCTURA> := cadena <CONJUNTOPRIMA>
+              | ;
+
+<CONJUNTOPRIMA> := : <CONJUNTO> <ESTRUCTURA>
+                 | -> <OPERADOR> <LISTAEXPRESION> <ESTRUCTURA>
+
+<CONJUNTO> := cadena -> <LISTACONJ>
+
+<LISTACONJ> := cadena <LISTALETRA>
+        |  num <LISTANUMERO>
+        |  signo <LISTASIGNO>
+
+<LISTALETRA> := ,cadena <LISTALETRA>
+             |  ~ cadena <LISTALETRA>
+             |  epsilon
+
+<LISTANUMERO> := ,num <LISTANUMERO>
+              |  ~ num <LISTANUMERO>
+              |  epsilon
+
+<LISTASIGNO> := ,signo <LISTASIGNO>
+              | ~ signo <LISTASIGNO>
+              | epsilon
+
+<OPERADOR> :=  *
+            |  +
+            |  ?
+            |  .
+            |  |
+<LISTAEXPRESION> := cadena  <LISTAEXPRESION>
+                 |  num     <LISTAEXPRESION>
+                 |  decimal <LISTAEXPRESION>
+                 |  signos  <LISTAEXPRESION>
+                 |  {<EXPRESION>} <LISTAEXPRESION>
+                 |  (<EXPRESION>) <LISTAEXPRESION>
+                 |  [<EXPRESION>] <LISTAEXPRESION>
+		 |  <OPERADOR> <LISTAEXPRESION>
+                 |  epsilon
+<EXPRESION> := cadena
+             | numero
+             | decimal
